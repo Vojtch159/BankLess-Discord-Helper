@@ -11,8 +11,8 @@ client.once('ready', () => {
 });
 
 client.on('message', (message) => {
-    // ignoruj správy od botov, inak by mohol nastať infinite loop
-    if (!message.author.bot) {
+    // ignoruj správy od botov a adminov
+    if (!message.author.bot && !message.member.hasPermission('ADMINISTRATOR')) {
         // prečítaj obsah správy
         let response: string = msganalyzer.read(message.content);
 
