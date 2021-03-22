@@ -1,5 +1,4 @@
 import * as file from 'fs/promises';
-import * as readline from 'readline';
 
 export function find(line: string, filename: string): Promise<boolean> {
     return file.readFile(filename, 'utf8')

@@ -37,8 +37,8 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Data directory
-data/
+# Lists of users
+data/*.txt
 
 # Compiled source code
 out/

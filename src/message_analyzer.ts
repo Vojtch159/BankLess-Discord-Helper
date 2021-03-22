@@ -1,28 +1,42 @@
+import {readFileSync} from 'fs';
 import * as filemngr from './file_manager';
 
-const users: string = './data/users.txt';
+const directory: string = './data/';
 
-const dane = new RegExp(/^z?da(n|ň)(e|i|í|it|iť)?$/i);
-//const burzy = new RegExp(/^burz(a|u|y)$/i);
+type keyword = {
+    keyword: string,
+    regex: string,
+    response: string
+}
+
+var keywords: keyword[];
+
+export function config() {
+    try {
+        // načítaj slová do pamäte
+        keywords = JSON.parse(readFileSync(directory + 'keywords.json', 'utf8'));
+    } catch (err) {
+        console.error(err);
+        process.exit(1);
+    }
+}
 
 export async function read(message: string, userID: string): Promise<string> {
-    // skontroluj či bol autor oboznamený
-    if (!await filemngr.find(userID, users)) {
-        // rozdeľ správu do listu slov podľa medzier, čiariek, otázníkov a podobne
-        var words: string[] = message.split(/[\s,.!?]+/);
-
-        // skontroluj či sa v správe nachádza slovo zhodné s jedným z keywords
-        for (let i = 0; i < words.length; i++) {
-            if (dane.test(words[i])) {
-                // pridaj užívateľa do zoznamu oboznamených
-                filemngr.append(userID, users);
-                return 'povinně přečíst tenhle https://cryptopanda.cz/dane článek';
-            }
-            /*
-            else if (burzy.test(words[i])) {
-                return 'zde https://www.cryptopanda.cz/nakup-kryptomen můžeš nalézt naše tři doporučené burzy';
-            }
-            */
+    // rozdeľ správu do listu slov podľa medzier, čiariek, otázníkov a podobne
+    var words: string[] = message.split(/[\s,.!?]+/);
+    
+    // skontroluj či sa v správe nachádza slovo zhodné s jedným z keywords
+    for (let i = 0; i < words.length; i++) {
+        for (let j = 0; j < keywords.length; j++) {
+            if (RegExp(keywords[j].regex, 'i').test(words[i])) {
+                // skontroluj či bol autor oboznamený
+                if (!await filemngr.find(userID, directory + keywords[j].keyword + '.txt')) {
+                    // pridaj užívateľa do zoznamu oboznamených
+                    filemngr.append(userID, directory + keywords[j].keyword + '.txt');
+                    // pošli odpoveď
+                    return keywords[j].response;
+                }
+            }            
         }
     }
 
