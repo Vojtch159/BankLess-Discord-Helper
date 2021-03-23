@@ -1,4 +1,5 @@
 import {readFileSync} from 'fs';
+import {createHash} from 'crypto';
 import * as filemngr from './file_manager';
 
 const directory: string = './data/';
@@ -29,10 +30,12 @@ export async function read(message: string, userID: string): Promise<string> {
     for (let i = 0; i < words.length; i++) {
         for (let j = 0; j < keywords.length; j++) {
             if (RegExp(keywords[j].regex, 'i').test(words[i])) {
+                // vypočítaj hash z ID užívateľa pomocou algoritmu SHA256 s výsledkom v hexidecimálnej podobe
+                let userHash: string = createHash('sha256').update(userID).digest('hex');
                 // skontroluj či bol autor oboznamený
-                if (!await filemngr.find(userID, directory + keywords[j].keyword + '.txt')) {
+                if (!await filemngr.find(userHash, directory + keywords[j].keyword + '.txt')) {
                     // pridaj užívateľa do zoznamu oboznamených
-                    filemngr.append(userID, directory + keywords[j].keyword + '.txt');
+                    filemngr.append(userHash, directory + keywords[j].keyword + '.txt');
                     // pošli odpoveď
                     return keywords[j].response;
                 }
