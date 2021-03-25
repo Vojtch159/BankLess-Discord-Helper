@@ -13,7 +13,7 @@ client.once('ready', () => {
 
 client.on('message', (message) => {
     // ignoruj správy od botov a adminov
-    if (!message.author.bot && !message.member.hasPermission('ADMINISTRATOR')) {
+    if (!message.author.bot || !message.member.hasRole("Admin" || "Moderátor" || "Expert")) {
         // prečítaj obsah spravy a skontroluj, či autor bol oboznamený
         msganalyzer.read(message.content, message.author.id)
         .then((response) => {
