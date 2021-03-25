@@ -12,7 +12,6 @@ Bot odpovídá na zprávy, které obsahují keywords.
 2. Instalace potřebných knihoven. `npm install`
 
 ## SPUŠTĚNÍ
-Je nutné projekt zcompilovat, protože je napsaný v typescriptu.
 ```
 npm run build
 ```
