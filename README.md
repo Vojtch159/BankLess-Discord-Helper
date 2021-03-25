@@ -1,24 +1,21 @@
-﻿## INTRODUCTION
-Privátny Discord bot, ktorým cieľom je pomôcť s moderáciou serveru a ich užívaťeľov.
-Na začiatok, pomôže nováčikom sa zorientovať a nájsť všetky potrebné informácie.
-Ak Vás zaujímajú kryptomeny, pripojte sa na náš [server](https://cryptopanda.cz/discord).
+﻿## ÚVOD
+Toto je bot vytvořený uživatelem @DevDejvid
+Bot odpovídá na zprávy, které obsahují keywords.
 
 ## PREREQUISITES
-- Inštalácia [Node.js](https://nodejs.org) pre kompiláciu a spustenie zdrojového JavaScript kódu.
-- Vytvorenie samotného bota na stránke [Discord Developer Portal](https://discord.com/developers/applications).
-- Pridanie botovho tokenu do súboru `.env_template` a následné premenovanie súboru na `.env`.
+- Node.js pro spuštění bota
+- Je nutné vytvořit samotného bota na stránce https://discord.com/developers/
+- Je nutné přidat privátní token bota do `.env_template` a soubor přejmenovat na `.env`.
 
-## INSTALLATION
-1. Naklonovanie projektu na lokálny počítač.
-2. Nainštalovanie potrebných balíčkov pomocou komandu `npm install` z priečinku projektu.
+## INSTALACE
+1. Projekt se naklonuje na server kde bude běžet. `git clone`
+2. Instalace potřebných knihoven. `npm install`
 
-## RUN
-Kompilácia zdrojového kódu.
+## SPUŠTĚNÍ
+Je nutné projekt zcompilovat, protože je napsaný v typescriptu.
 ```
 npm run build
 ```
-
-Kompilácia zdrojového kódu a následné spustenie bota.
 ```
 npm run start
 ```
