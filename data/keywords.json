@@ -1,12 +1,12 @@
 [
 {
 	"keyword": "dane",
-	"regex": "^z?da(n|ň)(e|i|í|it|iť)?$",
-	"response": "povinně přečíst tenhle https://cryptopanda.cz/dane článek"
+	"regex": "^z?da(n|ň)(e|i|í|it|iť|ě)?$",
+	"response": "odpověď na tvoji otázku pravděpodobně najdeš v tomto článku: https://www.cryptopanda.cz/dane :) "
 },
 {
 	"keyword": "burzy",
 	"regex": "^burz(a|u|y)$",
-	"response": "zde https://www.cryptopanda.cz/nakup-kryptomen můžeš nalézt naše tři doporučené burzy"
+	"response": "pokud se ptáš na to jakou burzu doporučujeme nebo jaké jsou na nějaké burze poplatky tak zkus první najít odpověď na tvoji otázku v tomto článku: https://www.cryptopanda.cz/burzy :) "
 }
 ]
