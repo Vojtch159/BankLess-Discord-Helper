@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
         "module": "CommonJS",
-        "rootDir": "./src",
+        "rootDirs": ["./src", "./config"],
         "outDir": "./out"
     },
-    "include": ["src/**/*.ts"],
+    "include": ["./src/**/*.ts", "./config/config.ts"],
     "exclude": ["node_modules"]
 }
