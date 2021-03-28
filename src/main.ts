@@ -13,7 +13,7 @@ client.once('ready', () => {
 });
 
 client.on('message', (message) => {
-   // only filter messages in specified channels
+    // only filter messages in specified channels
     if (!config.channelIDs.length || config.channelIDs.includes(message.channel.id)) {
         // ignore messages from bots, admins and members with specified roles
         if (!message.author.bot && !message.member.hasPermission('ADMINISTRATOR') && !blacklisted(message.member.roles.cache.array())) {
