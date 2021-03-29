@@ -1,6 +1,6 @@
 
 {
-  "name": "discord_helper",
+  "name": "pandabot",
   "version": "1.0.0",
   "description": "Help users by providing them with automatic responses based on keywords found within their messages.",
   "main": "./build/src/main.js",
