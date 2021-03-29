@@ -16,4 +16,4 @@ COPY . /usr/src/bot
 RUN npm run build
 
 # Start bot
-CMD ["node", "./out/main.js"]
+CMD ["node", "./build/src/main.js"]
