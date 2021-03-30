@@ -2,7 +2,7 @@ import {readFileSync} from 'fs';
 import {createHash} from 'crypto';
 import * as filemngr from './file_manager';
 
-const directory: string = './data/';
+const directory: string = './config/';
 
 type keyword = {
     keyword: string,
